@@ -1,0 +1,39 @@
+{
+  "name": "quant-lab-monorepo",
+  "version": "0.1.0",
+  "description": "Algorithmic Trading Backtesting Platform - Monorepo",
+  "private": true,
+  "workspaces": [
+    "packages/web"
+  ],
+  "scripts": {
+    "web:dev": "npm run dev --workspace=packages/web",
+    "web:build": "npm run build --workspace=packages/web",
+    "web:preview": "npm run preview --workspace=packages/web",
+    "web:lint": "npm run lint --workspace=packages/web",
+    "install:web": "npm install --workspace=packages/web",
+    "clean": "npm run clean --workspaces --if-present",
+    "format": "npm run format --workspaces --if-present"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/quant-lab.git"
+  },
+  "keywords": [
+    "algorithmic-trading",
+    "backtesting",
+    "quantitative-finance",
+    "react",
+    "fastapi",
+    "monorepo"
+  ],
+  "author": "Quant Lab Contributors",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20.0.0",
+    "npm": ">=10.0.0"
+  },
+  "devDependencies": {
+    "npm-run-all": "^4.1.5"
+  }
+}

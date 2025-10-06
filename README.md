@@ -6,7 +6,7 @@ An open-source AI Quant Trading Lab for backtesting algorithmic trading strategi
 
 ## Features
 
-- **3 Production Strategies**: Value Moat (Buffett-inspired), Trend Following, Multi-Factor
+- **3 Strategies**: Value Moat (Buffett-inspired), Trend Following, Multi-Factor
 - **Event-Driven Backtesting**: Point-in-time data access prevents look-ahead bias
 - **Real-Time Streaming**: Server-Sent Events (SSE) for live backtest progress
 - **Modern Stack**: FastAPI + React + PostgreSQL/SQLite

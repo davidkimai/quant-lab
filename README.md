@@ -2,7 +2,7 @@
 
 ## Algorithmic Trading Backtesting Platform
 
-An open-source platform for backtesting algorithmic trading strategies with real-time visualization.
+An open-source AI Quant Trading Lab for backtesting algorithmic trading strategies with real-time visualization.
 
 ## Features
 

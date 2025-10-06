@@ -1,6 +1,8 @@
-# Quant Lab - Algorithmic Trading Backtesting Platform
+# Quant Lab 
 
-A production-ready, open-source platform for backtesting algorithmic trading strategies with real-time visualization.
+## Algorithmic Trading Backtesting Platform
+
+An open-source platform for backtesting algorithmic trading strategies with real-time visualization.
 
 ## Features
 

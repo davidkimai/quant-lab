@@ -24,8 +24,8 @@ services:
   # FastAPI Backend
   api:
     build:
-      context: ./packages/api
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: ./packages/api/Dockerfile
     container_name: quant-lab-api
     environment:
       DATABASE_TYPE: postgresql
@@ -40,9 +40,6 @@ services:
     depends_on:
       postgres:
         condition: service_healthy
-    volumes:
-      - ./packages/core:/app/core:ro
-      - ./packages/api:/app/api:ro
     networks:
       - quant-lab-network
     command: uvicorn quant_lab_api.main:app --host 0.0.0.0 --port 8000
@@ -50,8 +47,8 @@ services:
   # React Frontend
   web:
     build:
-      context: ./packages/web
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: ./packages/web/Dockerfile
     container_name: quant-lab-web
     environment:
       VITE_API_URL: http://localhost:8000
@@ -59,9 +56,6 @@ services:
       - "3000:3000"
     depends_on:
       - api
-    volumes:
-      - ./packages/web:/app:ro
-      - /app/node_modules
     networks:
       - quant-lab-network
 

@@ -1,0 +1,51 @@
+[tool.poetry]
+name = "quant-lab-api"
+version = "0.1.0"
+description = "FastAPI service for quant-lab backtesting and strategy management"
+authors = ["Quant Lab Contributors"]
+readme = "README.md"
+packages = [{include = "quant_lab_api"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+# Core dependencies
+quant-lab-core = {path = "../core", develop = true}
+
+# Web framework
+fastapi = "^0.109.0"
+uvicorn = {extras = ["standard"], version = "^0.27.0"}
+
+# Database
+sqlalchemy = "^2.0.25"
+alembic = "^1.13.1"
+psycopg2-binary = "^2.9.9"  # PostgreSQL adapter
+
+# Async support
+asyncio = "^3.4.3"
+aiofiles = "^23.2.1"
+
+# Validation
+pydantic = "^2.6.0"
+pydantic-settings = "^2.1.0"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.0.0"
+pytest-asyncio = "^0.23.0"
+httpx = "^0.26.0"  # For testing
+mypy = "^1.8.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+plugins = ["pydantic.mypy"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]

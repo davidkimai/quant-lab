@@ -1,0 +1,51 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Virtual environments
+venv/
+env/
+ENV/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-error.log*
+
+# Build artifacts
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Data
+data/*
+!data/README.md
+
+# Environment
+.env
+.env.local
+
+# Git
+.git/
+.gitignore

@@ -9,10 +9,10 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 # Copy core package
-COPY ../core /app/core
+COPY packages/core /app/core
 
 # Copy API package
-COPY . /app/api
+COPY packages/api /app/api
 
 # Install Python dependencies
 RUN pip install --no-cache-dir --break-system-packages \

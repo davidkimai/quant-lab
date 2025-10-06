@@ -7,6 +7,7 @@ including the quantity, average cost basis, and current market value.
 
 from decimal import Decimal
 from enum import Enum
+from typing import Optional
 from pydantic import BaseModel, Field, field_validator
 
 
@@ -136,6 +137,3 @@ class Position(BaseModel):
     class Config:
         frozen = True  # Immutable
         use_enum_values = True
-
-
-from typing import Optional  # Move import to top in actual implementation

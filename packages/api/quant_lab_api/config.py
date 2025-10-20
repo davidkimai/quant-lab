@@ -26,24 +26,36 @@ class Settings(BaseSettings):
     )
     
     # Application
-    app_name: str = "Quant Lab API"
-    app_version: str = "0.1.0"
+    APP_NAME: str = "Quant Lab API"
+    APP_VERSION: str = "0.1.0"
     debug: bool = False
-    
+
     # Database
+    database_type: str = "sqlite"
     database_url: str = "sqlite:///./quant_lab.db"
-    
+    postgres_host: str = "localhost"
+    postgres_port: int = 5432
+    postgres_user: str = "quantlab"
+    postgres_password: str = "quantlab"
+    postgres_db: str = "quantlab"
+
     # CORS
-    cors_origins: str = "http://localhost:3000,http://localhost:5173"
-    
+    CORS_ORIGINS: list[str] = ["http://localhost:3000", "http://localhost:5173"]
+
     # Data paths
-    csv_data_dir: str = "/home/claude/quant-lab/data"
-    fundamentals_file: str = "/home/claude/quant-lab/data/fundamentals.csv"
-    
-    @property
-    def cors_origins_list(self) -> list[str]:
-        """Parse CORS origins from comma-separated string."""
-        return [origin.strip() for origin in self.cors_origins.split(",")]
+    csv_data_dir: str = "./data"
+    fundamentals_file: str = "./data/fundamentals.csv"
+
+    def __init__(self, **kwargs):
+        """Initialize settings and compute database URL if using PostgreSQL."""
+        super().__init__(**kwargs)
+
+        # Override database_url if using PostgreSQL
+        if self.database_type == "postgresql":
+            self.database_url = (
+                f"postgresql://{self.postgres_user}:{self.postgres_password}"
+                f"@{self.postgres_host}:{self.postgres_port}/{self.postgres_db}"
+            )
     
     @property
     def is_sqlite(self) -> bool:

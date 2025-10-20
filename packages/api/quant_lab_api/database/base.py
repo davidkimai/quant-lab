@@ -56,7 +56,10 @@ def get_db() -> Generator[Session, None, None]:
 def init_db() -> None:
     """
     Initialize database by creating all tables.
-    
+
     Call this on application startup.
     """
+    # Import models to register them with Base
+    from quant_lab_api.database import models  # noqa: F401
+
     Base.metadata.create_all(bind=engine)

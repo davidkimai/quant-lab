@@ -26,8 +26,8 @@ class Settings(BaseSettings):
     )
     
     # Application
-    app_name: str = "Quant Lab API"
-    app_version: str = "0.1.0"
+    APP_NAME: str = "Quant Lab API"
+    APP_VERSION: str = "0.1.0"
     debug: bool = False
     
     # Database
@@ -35,15 +35,15 @@ class Settings(BaseSettings):
     
     # CORS
     cors_origins: str = "http://localhost:3000,http://localhost:5173"
-    
+
+    @property
+    def CORS_ORIGINS(self) -> list[str]:
+        """Parse CORS origins from comma-separated string."""
+        return [origin.strip() for origin in self.cors_origins.split(",")]
+
     # Data paths
     csv_data_dir: str = "/home/claude/quant-lab/data"
     fundamentals_file: str = "/home/claude/quant-lab/data/fundamentals.csv"
-    
-    @property
-    def cors_origins_list(self) -> list[str]:
-        """Parse CORS origins from comma-separated string."""
-        return [origin.strip() for origin in self.cors_origins.split(",")]
     
     @property
     def is_sqlite(self) -> bool:

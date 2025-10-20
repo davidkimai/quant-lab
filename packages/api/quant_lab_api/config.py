@@ -41,9 +41,9 @@ class Settings(BaseSettings):
         """Parse CORS origins from comma-separated string."""
         return [origin.strip() for origin in self.cors_origins.split(",")]
 
-    # Data paths
-    csv_data_dir: str = "/home/claude/quant-lab/data"
-    fundamentals_file: str = "/home/claude/quant-lab/data/fundamentals.csv"
+    # Data paths (default to Docker paths, can be overridden with env vars)
+    csv_data_dir: str = "/app/data"
+    fundamentals_file: str = "/app/data/fundamentals.csv"
     
     @property
     def is_sqlite(self) -> bool:

@@ -15,9 +15,19 @@ COPY packages/core /app/core
 COPY packages/api /app/api
 
 # Install Python dependencies
+# Install core package as editable
+RUN pip install --no-cache-dir -e /app/core
+
+# Install API package dependencies and the API package itself
 RUN pip install --no-cache-dir \
-    -e /app/core \
-    fastapi uvicorn sqlalchemy psycopg2-binary pydantic-settings requests
+    fastapi uvicorn[standard] sqlalchemy psycopg2-binary \
+    pydantic pydantic-settings aiofiles requests yfinance
+
+# Install API package as editable
+RUN pip install --no-cache-dir -e /app/api
+
+# Create data directory for CSV files
+RUN mkdir -p /app/data
 
 WORKDIR /app/api
 

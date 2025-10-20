@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   # PostgreSQL Database
   postgres:
@@ -28,13 +26,8 @@ services:
       dockerfile: ./packages/api/Dockerfile
     container_name: quant-lab-api
     environment:
-      DATABASE_TYPE: postgresql
-      POSTGRES_HOST: postgres
-      POSTGRES_PORT: 5432
-      POSTGRES_USER: quantlab
-      POSTGRES_PASSWORD: quantlab
-      POSTGRES_DB: quantlab
-      CORS_ORIGINS: '["http://localhost:3000"]'
+      DATABASE_URL: postgresql://quantlab:quantlab@postgres:5432/quantlab
+      CORS_ORIGINS: http://localhost:3000
     ports:
       - "8000:8000"
     depends_on:

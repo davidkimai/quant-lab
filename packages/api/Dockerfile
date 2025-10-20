@@ -15,9 +15,9 @@ COPY packages/core /app/core
 COPY packages/api /app/api
 
 # Install Python dependencies
-RUN pip install --no-cache-dir --break-system-packages \
+RUN pip install --no-cache-dir \
     -e /app/core \
-    fastapi uvicorn sqlalchemy psycopg2-binary pydantic-settings
+    fastapi uvicorn sqlalchemy psycopg2-binary pydantic-settings requests
 
 WORKDIR /app/api
 
